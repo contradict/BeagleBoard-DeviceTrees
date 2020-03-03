@@ -1,0 +1,54 @@
+/* vim: set sw=4 ts=4 noet: */
+/dts-v1/;
+/plugin/;
+
+#include <dt-bindings/pinctrl/dra.h>
+
+/ {
+	compatible = "beagle,am5729-beagleboneai";
+
+	fragment@0 {
+		target = <&cape_pins>;
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@1 {
+		target = <&dra7_pmx_core>;
+		__overlay__ {
+			bbai_uart3_pins: pinmux_bbai_uart3_pins {
+				pinctrl-single,pins = <
+					/* B26: P9.22a: xref_clk2.off off */
+					DRA7XX_CORE_IOPAD(0x369C, MUX_MODE15)
+					/* A26: P9.22b: spi2_sclk.off uart3_rxd */
+					DRA7XX_CORE_IOPAD(0x37C0, PIN_INPUT | MUX_MODE1)
+					/* AF8: P9.21a: vin1a_vsync0.off off */
+					DRA7XX_CORE_IOPAD(0x34F0, MUX_MODE15)
+					/* B22: P9.21b: spi2_d1.off uart3_txd */
+					DRA7XX_CORE_IOPAD(0x37C4, PIN_OUTPUT | MUX_MODE1)
+					>;
+					/* RTS */
+					/* B24: P9.17a: spi2_cs0.off uart3_rtsn */
+					/* DRA7XX_CORE_IOPAD(0x37CC, PIN_OUTPUT | MUX_MODE1) */
+					/* F12: P9.17b: mcasp1_axr1.off off */
+					/* DRA7XX_CORE_IOPAD(0x36B8, MUX_MODE15) */
+					/* CTS */
+					/* G17: P9.18a: spi2_d0.off uart3_ctsn */
+					/* DRA7XX_CORE_IOPAD(0x37C8, PIN_INPUT | MUX_MODE1) */
+					/* G12: P9.18b: mcasp1_axr0.off off */
+					/* DRA7XX_CORE_IOPAD(0x36B4, MUX_MODE14) */
+			};
+		};
+	};
+
+	fragment@2 {
+		target = <&uart3>;
+		__overlay__ {
+			status = "okay";
+			pinctrl-names = "default";
+			pinctrl-0 = <&bbai_uart3_pins>;
+		};
+	};
+};
+

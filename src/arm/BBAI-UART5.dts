@@ -1,0 +1,75 @@
+/* vim: set sw=4 ts=4 noet: */
+/dts-v1/;
+/plugin/;
+
+#include <dt-bindings/pinctrl/dra.h>
+
+/ {
+	compatible = "beagle,am5729-beagleboneai";
+
+	fragment@0 {
+		target = <&cape_pins>;
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@1 {
+		target = <&dra7_pmx_core>;
+		__overlay__ {
+			bbai_uart5_pins: pinmux_bbai_uart5_pins {
+				pinctrl-single,pins = <
+					/* B19: P9.11a: mcasp3_axr0.off uart5_rxd */
+					DRA7XX_CORE_IOPAD(0x372C, PIN_INPUT | MUX_MODE4)
+					/* B8: P9.11b: vout1_d17.off off */
+					DRA7XX_CORE_IOPAD(0x3620, MUX_MODE15)
+					/* C17: P9.13: mcasp3_axr1.off uart5_txd*/
+					DRA7XX_CORE_IOPAD(0x3730, PIN_OUTPUT | MUX_MODE4)
+					/* AC3: P8.6: mmc3_dat3.off uart5_rtsn */
+					DRA7XX_CORE_IOPAD(0x3790, PIN_OUTPUT | MUX_MODE2)
+					>;
+					/* CTS */
+					/* AC9: P8.5: mmc3_dat2.off uart5_ctsn */
+					/* DRA7XX_CORE_IOPAD(0x378C, PIN_INPUT | MUX_MODE2) */
+
+					/* TXD */
+					/* AC6: P8.24: mmc3_dat1.off uart5_txd */
+					/* DRA7XX_CORE_IOPAD(0x3788, PIN_OUTPUT | MUX_MODE2) */
+					/* B7: P8.45b: vout1_d16.off off */
+					/* DRA7XX_CORE_IOPAD(0x361C, MUX_MODE15) */
+					/* G10: P8.46a: vout1_d1.off uart5_txd */
+					/* DRA7XX_CORE_IOPAD(0x35E0, PIN_OUTPUT | MUX_MODE2) */
+					/* B24: P9.17a: spi2_cs0.off uart5_txd */
+					/* DRA7XX_CORE_IOPAD(0x37CC, PIN_OUTPUT | MUX_MODE2) */
+					/* F12: P9.17b: mcasp1_axr1.off off */
+					/* DRA7XX_CORE_IOPAD(0x36B8, MUX_MODE15) */
+
+					/* RXD */
+					/* AC7: P8.25: mmc3_dat0.off uart5_rxd */
+					/* DRA7XX_CORE_IOPAD(0x3784, PIN_INPUT | MUX_MODE2) */
+					/* F11: P8.45a: vout1_d0.off uart5_rxd */
+					/* DRA7XX_CORE_IOPAD(0x35DC, PIN_INPUT | MUX_MODE2) */
+					/* A10: P8.46b: vout1_d23.off off */
+					/* DRA7XX_CORE_IOPAD(0x3638, MUX_MODE15) */
+					/* G17: P9.18a: spi2_d0.off uart5_rxd */
+					/* DRA7XX_CORE_IOPAD(0x37C8, PIN_INPUT MUX_MODE2) */
+					/* G12: P9.18b: mcasp1_axr0.off off */
+					/* DRA7XX_CORE_IOPAD(0x36B4, MUX_MODE14) */
+					/* R6: P9.19a: gpmc_a0.i2c4_scl uart5_rxd */
+					/* DRA7XX_CORE_IOPAD(0x3440, PIN_INPUT | MUX_MODE8) */
+					/* F4: P9.19b: vin2a_d5.pr1_pru1_gpi2 */
+					/* DRA7XX_CORE_IOPAD(0x357C, MUX_MODE15) */
+			};
+		};
+	};
+
+	fragment@2 {
+		target = <&uart5>;
+		__overlay__ {
+			status = "okay";
+			pinctrl-names = "default";
+			pinctrl-0 = <&bbai_uart5_pins>;
+		};
+	};
+};
+
