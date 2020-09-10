@@ -20,7 +20,7 @@
 			bbai_uart5_pins: pinmux_bbai_uart5_pins {
 				pinctrl-single,pins = <
 					/* B19: P9.11a: mcasp3_axr0.off uart5_rxd */
-					DRA7XX_CORE_IOPAD(0x372C, PIN_INPUT | MUX_MODE4)
+					DRA7XX_CORE_IOPAD(0x372C, PIN_INPUT_PULLUP | MUX_MODE4)
 					/* B8: P9.11b: vout1_d17.off off */
 					DRA7XX_CORE_IOPAD(0x3620, MUX_MODE15)
 					/* C17: P9.13: mcasp3_axr1.off uart5_txd*/
