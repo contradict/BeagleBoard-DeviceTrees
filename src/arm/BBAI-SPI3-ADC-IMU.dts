@@ -22,7 +22,7 @@
 					/* A12: P9.28: mcasp1_axr11.off spi3_cs0 */
 					DRA7XX_CORE_IOPAD(0x36E0, PIN_OUTPUT | MUX_MODE3)
 					/* A11: P9.29a: mcasp1_axr9.off spi3_d1 */
-					DRA7XX_CORE_IOPAD(0x36D8, PIN_INPUT | MUX_MODE3)
+					DRA7XX_CORE_IOPAD(0x36D8, PIN_INPUT_PULLUP | MUX_MODE3)
 					/* D14: P9.29b: mcasp1_fsx.off off */
 					DRA7XX_CORE_IOPAD(0x36A8, MUX_MODE15)
 					/* B13: P9.30: mcasp1_axr10.off spi3_d0 */
