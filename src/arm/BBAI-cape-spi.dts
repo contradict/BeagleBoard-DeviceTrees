@@ -1,0 +1,39 @@
+/* vim: set sw=4 ts=4 noet: */
+/dts-v1/;
+/plugin/;
+
+#include <dt-bindings/pinctrl/dra.h>
+
+/ {
+	compatible = "beagle,am5729-beagleboneai";
+
+	fragment@0 {
+		target = <&cape_pins>;
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@1 {
+		target = <&dra7_pmx_core>;
+		__overlay__ {
+			bbai_i2c4_pins: pinmux_i2c4_pins {
+				pinctrl-single,pins = <
+				DRA7XX_CORE_IOPAD(0x3440, PIN_INPUT_PULLUP | MUX_MODE7) /* R6: P9.19a: gpmc_a0.i2c4_scl */
+                DRA7XX_CORE_IOPAD(0x357C, PIN_INPUT_PULLUP | MUX_MODE12 ) /* F4: P9.19b: vin2a_d5.pr1_pru1_gpi2 */
+                DRA7XX_CORE_IOPAD(0x3444, PIN_INPUT_PULLUP | MUX_MODE7) /* T9: P9.20a: gpmc_a1.i2c4_sda */
+                DRA7XX_CORE_IOPAD(0x3578, PIN_INPUT_PULLUP | MUX_MODE12) /* D2: P9.20b: vin2a_d4.pr1_pru1_gpi1 */
+				>;
+			};
+		};
+	};
+
+    fragment@2 {
+		target = <&i2c4>;
+		__overlay__ {
+			pinctrl-names = "default";
+			pinctrl-0 = <&bbai_i2c4_pins>;
+
+	    };
+	};
+};

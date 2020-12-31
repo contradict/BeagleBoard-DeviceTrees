@@ -1,0 +1,233 @@
+/* vim: set sw=4 ts=4 noet: */
+/dts-v1/;
+/plugin/;
+
+#include <dt-bindings/pinctrl/dra.h>
+
+/ {
+	compatible = "beagle,am5729-beagleboneai";
+
+	fragment@0 {
+		target = <&cape_pins>;
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@1 {
+		target = <&dra7_pmx_core>;
+		__overlay__ {
+			bbai_spi3_pins: pinmux_spi3_pins {
+				pinctrl-single,pins = <
+					/* A12: P9.28: mcasp1_axr11.off spi3_cs0 */
+					DRA7XX_CORE_IOPAD(0x36E0, PIN_OUTPUT | MUX_MODE3)
+					/* A11: P9.29a: mcasp1_axr9.off spi3_d1 */
+					DRA7XX_CORE_IOPAD(0x36D8, PIN_INPUT_PULLUP | MUX_MODE3)
+					/* D14: P9.29b: mcasp1_fsx.off off */
+					DRA7XX_CORE_IOPAD(0x36A8, MUX_MODE15)
+					/* B13: P9.30: mcasp1_axr10.off spi3_d0 */
+					DRA7XX_CORE_IOPAD(0x36DC, PIN_OUTPUT | MUX_MODE3)
+					/* B12: P9.31a: mcasp1_axr8.off spi3_sclk */
+					DRA7XX_CORE_IOPAD(0x36D4, PIN_OUTPUT | MUX_MODE3)
+					/* C14: P9.31b: mcasp1_aclkx.off off */
+					DRA7XX_CORE_IOPAD(0x36A4, MUX_MODE15)
+					/* E14: P9.42a: mcasp1_axr12.off spi3_cs1 */
+					DRA7XX_CORE_IOPAD(0x36E4, MUX_MODE3)
+					/* C2: P9.42b: vin2a_d13.off off*/
+					DRA7XX_CORE_IOPAD(0x359C, MUX_MODE15)
+				>;
+			};
+			bbai_uart10_pins: pinmux_bbai_uart10_pins {
+				pinctrl-single,pins = <
+					/* F20: P9.24: gpio6_15.off uart10_txd */
+					DRA7XX_CORE_IOPAD(0x368C, PIN_OUTPUT | MUX_MODE3)
+					/* E21: P9.26a: gpio6_14.off uart10_rxd */
+					DRA7XX_CORE_IOPAD(0x3688, PIN_INPUT | MUX_MODE3)
+					/* AE2: P9.26b: vin1a_d20.off off */
+					DRA7XX_CORE_IOPAD(0x3544, MUX_MODE15)
+					>;
+					/* CTS */
+				    /* AB8: P8.3: mmc3_dat6.offauart10_ctsn  */
+					/* DRA7XX_CORE_IOPAD(0x379C, PIN_INPUT | MUX_MODE3) */
+					/* RTS */
+					/* AB5: P8.4: mmc3_dat7.off */
+					/* DRA7XX_CORE_IOPAD(0x37A0, MUX_MODE14) */
+					/* Alternate TXD */
+					/* AD6: P8.22: mmc3_dat5.off uart10_txd */
+					/* DRA7XX_CORE_IOPAD(0x3798, PIN_OUTPUT | MUX_MODE3) */
+					/* Alternate RXD */
+					/* AC8: P8.23: mmc3_dat4.off uart10_rxd */
+					/* DRA7XX_CORE_IOPAD(0x3794, PIN_INPUT | MUX_MODE3) */
+					/* D1: P8.15a: vin2a_d2.off */
+					/* DRA7XX_CORE_IOPAD(0x3570, MUX_MODE14) */
+					/* A3: P8.15b: vin2a_d19.off uart10_rxd */
+					/* DRA7XX_CORE_IOPAD(0x35B4, PIN_INPUT | MUX_MODE8) */
+			};
+			bbai_uart3_pins: pinmux_bbai_uart3_pins {
+				pinctrl-single,pins = <
+					/* B26: P9.22a: xref_clk2.off off */
+					DRA7XX_CORE_IOPAD(0x369C, MUX_MODE15)
+					/* A26: P9.22b: spi2_sclk.off uart3_rxd */
+					DRA7XX_CORE_IOPAD(0x37C0, PIN_INPUT | MUX_MODE1)
+					/* AF8: P9.21a: vin1a_vsync0.off off */
+					DRA7XX_CORE_IOPAD(0x34F0, MUX_MODE15)
+					/* B22: P9.21b: spi2_d1.off uart3_txd */
+					DRA7XX_CORE_IOPAD(0x37C4, PIN_OUTPUT | MUX_MODE1)
+					>;
+					/* RTS */
+					/* B24: P9.17a: spi2_cs0.off uart3_rtsn */
+					/* DRA7XX_CORE_IOPAD(0x37CC, PIN_OUTPUT | MUX_MODE1) */
+					/* F12: P9.17b: mcasp1_axr1.off off */
+					/* DRA7XX_CORE_IOPAD(0x36B8, MUX_MODE15) */
+					/* CTS */
+					/* G17: P9.18a: spi2_d0.off uart3_ctsn */
+					/* DRA7XX_CORE_IOPAD(0x37C8, PIN_INPUT | MUX_MODE1) */
+					/* G12: P9.18b: mcasp1_axr0.off off */
+					/* DRA7XX_CORE_IOPAD(0x36B4, MUX_MODE14) */
+			};
+			bbai_uart5_pins: pinmux_bbai_uart5_pins {
+				pinctrl-single,pins = <
+					/* B19: P9.11a: mcasp3_axr0.off uart5_rxd */
+					DRA7XX_CORE_IOPAD(0x372C, PIN_INPUT_PULLUP | MUX_MODE4)
+					/* B8: P9.11b: vout1_d17.off off */
+					DRA7XX_CORE_IOPAD(0x3620, MUX_MODE15)
+					/* C17: P9.13: mcasp3_axr1.off uart5_txd*/
+					DRA7XX_CORE_IOPAD(0x3730, PIN_OUTPUT | MUX_MODE4)
+					/* AC3: P8.6: mmc3_dat3.off uart5_rtsn */
+					DRA7XX_CORE_IOPAD(0x3790, PIN_OUTPUT | MUX_MODE2)
+					>;
+					/* CTS */
+					/* AC9: P8.5: mmc3_dat2.off uart5_ctsn */
+					/* DRA7XX_CORE_IOPAD(0x378C, PIN_INPUT | MUX_MODE2) */
+
+					/* TXD */
+					/* AC6: P8.24: mmc3_dat1.off uart5_txd */
+					/* DRA7XX_CORE_IOPAD(0x3788, PIN_OUTPUT | MUX_MODE2) */
+					/* B7: P8.45b: vout1_d16.off off */
+					/* DRA7XX_CORE_IOPAD(0x361C, MUX_MODE15) */
+					/* G10: P8.46a: vout1_d1.off uart5_txd */
+					/* DRA7XX_CORE_IOPAD(0x35E0, PIN_OUTPUT | MUX_MODE2) */
+					/* B24: P9.17a: spi2_cs0.off uart5_txd */
+					/* DRA7XX_CORE_IOPAD(0x37CC, PIN_OUTPUT | MUX_MODE2) */
+					/* F12: P9.17b: mcasp1_axr1.off off */
+					/* DRA7XX_CORE_IOPAD(0x36B8, MUX_MODE15) */
+
+					/* RXD */
+					/* AC7: P8.25: mmc3_dat0.off uart5_rxd */
+					/* DRA7XX_CORE_IOPAD(0x3784, PIN_INPUT | MUX_MODE2) */
+					/* F11: P8.45a: vout1_d0.off uart5_rxd */
+					/* DRA7XX_CORE_IOPAD(0x35DC, PIN_INPUT | MUX_MODE2) */
+					/* A10: P8.46b: vout1_d23.off off */
+					/* DRA7XX_CORE_IOPAD(0x3638, MUX_MODE15) */
+					/* G17: P9.18a: spi2_d0.off uart5_rxd */
+					/* DRA7XX_CORE_IOPAD(0x37C8, PIN_INPUT MUX_MODE2) */
+					/* G12: P9.18b: mcasp1_axr0.off off */
+					/* DRA7XX_CORE_IOPAD(0x36B4, MUX_MODE14) */
+					/* R6: P9.19a: gpmc_a0.i2c4_scl uart5_rxd */
+					/* DRA7XX_CORE_IOPAD(0x3440, PIN_INPUT | MUX_MODE8) */
+					/* F4: P9.19b: vin2a_d5.pr1_pru1_gpi2 */
+					/* DRA7XX_CORE_IOPAD(0x357C, MUX_MODE15) */
+			};
+			bbai_uart8_pins: pinmux_bbai_uart8_pins {
+				pinctrl-single,pins = <
+					DRA7XX_CORE_IOPAD(0x35FC, MUX_MODE15) /* off */ /* E8: P8.37a: vout1_d8.off */
+					DRA7XX_CORE_IOPAD(0x3738, MUX_MODE15 | PIN_INPUT_PULLDOWN)  /* uart8_txd */ /* A21: P8.37b: mcasp4_fsx.off */
+					DRA7XX_CORE_IOPAD(0x3600, MUX_MODE15) /* off */ /* D9: P8.38a: vout1_d9.off */
+					DRA7XX_CORE_IOPAD(0x3734, MUX_MODE3 | PIN_INPUT) /* uar8_rxd */ /* C18: P8.38b: mcasp4_aclkx.off */
+				>;
+			};
+
+			bbai_ssr_pins: pinmux_bbai_ssr_pins {
+				pinctrl-single,pins = <
+					DRA7XX_CORE_IOPAD(0x35D8, PIN_OUTPUT|MUX_MODE14) /* E11: P8.27a: vout1_vsync.off */
+					DRA7XX_CORE_IOPAD(0x3628, MUX_MODE15) /* A8: P8.27b: vout1_d19.off */
+					DRA7XX_CORE_IOPAD(0x35C8, PIN_OUTPUT|MUX_MODE14) /* D11: P8.28a: vout1_clk.off */
+					DRA7XX_CORE_IOPAD(0x362C, MUX_MODE15) /* C9: P8.28b: vout1_d20.off */
+					DRA7XX_CORE_IOPAD(0x35D4, PIN_OUTPUT|MUX_MODE14) /* C11: P8.29a: vout1_hsync.off */
+					DRA7XX_CORE_IOPAD(0x3630, MUX_MODE15) /* A9: P8.29b: vout1_d21.off */
+					DRA7XX_CORE_IOPAD(0x35CC, PIN_OUTPUT|MUX_MODE14) /* B10: P8.30a: vout1_de.off */
+					DRA7XX_CORE_IOPAD(0x3634, MUX_MODE15) /* B9: P8.30b: vout1_d22.off */
+					DRA7XX_CORE_IOPAD(0x3614, PIN_OUTPUT|MUX_MODE14) /* C8: P8.31a: vout1_d14.off */
+					DRA7XX_CORE_IOPAD(0x373C, MUX_MODE15) /* G16: P8.31b: mcasp4_axr0.off */
+					DRA7XX_CORE_IOPAD(0x3618, PIN_OUTPUT|MUX_MODE14) /* C7: P8.32a: vout1_d15.off */
+					DRA7XX_CORE_IOPAD(0x3740, MUX_MODE14) /* D17: P8.32b: mcasp4_axr1.off */
+					DRA7XX_CORE_IOPAD(0x3610, PIN_OUTPUT|MUX_MODE14) /* C6: P8.33a: vout1_d13.off */
+					DRA7XX_CORE_IOPAD(0x34E8, MUX_MODE15) /* AF9: P8.33b: vin1a_fld0.off */
+					DRA7XX_CORE_IOPAD(0x3608, PIN_OUTPUT|MUX_MODE14) /* D8: P8.34a: vout1_d11.off */
+					DRA7XX_CORE_IOPAD(0x3564, MUX_MODE15) /* G6: P8.34b: vin2a_vsync0.off */
+					DRA7XX_CORE_IOPAD(0x360C, PIN_OUTPUT|MUX_MODE14) /* A5: P8.35a: vout1_d12.off */
+					DRA7XX_CORE_IOPAD(0x34E4, MUX_MODE15) /* AD9: P8.35b: vin1a_de0.off */
+					DRA7XX_CORE_IOPAD(0x3604, PIN_OUTPUT|MUX_MODE14) /* D7: P8.36a: vout1_d10.off */
+					DRA7XX_CORE_IOPAD(0x3568, MUX_MODE15) /* F2: P8.36b: vin2a_d0.off */
+				>;
+			};
+		};
+	};
+
+	fragment@2 {
+		target = <&mcspi3>;
+		__overlay__ {
+
+			#address-cells = <1>;
+			#size-cells = <0>;
+			status = "okay";
+			pinctrl-names = "default";
+			pinctrl-0 = <&bbai_spi3_pins>;
+			ti,pindir-d0-out-d1-in = <1>;
+
+			imu@0 {
+			    compatible = "rohm,dh2228fv";
+				spi-max-frequency = <2500000>;
+				reg = <0>;
+			};
+		};
+	};
+
+	fragment@3 {
+		target = <&uart10>;
+		__overlay__ {
+			status = "okay";
+			pinctrl-names = "default";
+			pinctrl-0 = <&bbai_uart10_pins>;
+		};
+	};
+
+	fragment@4 {
+		target = <&uart3>;
+		__overlay__ {
+			status = "okay";
+			pinctrl-names = "default";
+			pinctrl-0 = <&bbai_uart3_pins>;
+		};
+	};
+
+	fragment@5 {
+		target = <&uart5>;
+		__overlay__ {
+			status = "okay";
+			pinctrl-names = "default";
+			pinctrl-0 = <&bbai_uart5_pins>;
+		};
+	};
+
+	fragment@6 {
+		target = <&uart8>;
+		__overlay__ {
+			status = "okay";
+			pinctrl-names = "default";
+			pinctrl-0 = <&bbai_uart8_pins>;
+		};
+	};
+
+	fragment@7 {
+		target-path="/";
+		__overlay__ {
+			ssr_pins: ssr_pins {
+				compatible = "gpio-leds";
+				pinctrl-names = "default";
+				pinctrl-0 = <&bbai_ssr_pins>;
+				status = "okay";
+			};
+		};
+	};
+};

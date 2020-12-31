@@ -1,0 +1,30 @@
+/* vim: set sw=4 ts=4 noet: */
+/dts-v1/;
+/plugin/;
+
+#include <dt-bindings/pinctrl/dra.h>
+
+/ {
+	compatible = "beagle,am5729-beagleboneai";
+
+	fragment@0 {
+		target = <&cape_pins>;
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@1 {
+		target = <&epwmss0>;
+		__overlay__ {
+			status = "okay";
+			ehrpwm0: pwm@4843e200 {
+				status = "okay";
+			};
+			ecap0: ecap@4843e100 {
+				status = "okay";
+			};
+		};
+	};
+};
+
