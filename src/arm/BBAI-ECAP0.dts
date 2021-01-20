@@ -1,0 +1,31 @@
+/* vim: set sw=4 ts=4 noet: */
+/dts-v1/;
+/plugin/;
+
+#include <dt-bindings/pinctrl/dra.h>
+
+/ {
+	compatible = "beagle,am5729-beagleboneai";
+
+	fragment@0 {
+		target = <&cape_pins>;
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@1 {
+		target = <&dra7_pmx_core>;
+		__overlay__ {
+			bbai_ecap0_pins: pinmux_bbai_ecap0_pins {
+				pinctrl-single,pins = <
+					/* D1: P8.15a: vin2a_d2.off ecap input*/
+					DRA7XX_CORE_IOPAD(0x3570, PIN_INPUT | MUX_MODE11)
+					/* A3: P8.15b: vin2a_d19.off */
+					DRA7XX_CORE_IOPAD(0x35B4, MUX_MODE15)
+				>;
+			};
+		};
+	};
+
+};
